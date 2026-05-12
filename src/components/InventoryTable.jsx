@@ -1,7 +1,7 @@
 const InventoryTable = ({ data, onRestock, onDelete }) => {
   return (
-    <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50 backdrop-blur-md">
-      <table className="w-full text-left border-collapse">
+    <div className="w-full overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-900/50 backdrop-blur-md">
+      <table className="w-full text-left border-collapse min-w-[600px]">
         <thead>
           <tr className="border-b border-zinc-800 bg-zinc-900/80">
             <th className="p-4 font-semibold text-zinc-300 text-sm">
@@ -15,7 +15,7 @@ const InventoryTable = ({ data, onRestock, onDelete }) => {
             <th className="p-4 font-semibold text-zinc-300 text-sm text-right">
               Actions
             </th>
-          </tr>
+          </tr> 
         </thead>
         <tbody className="divide-y divide-zinc-800">
           {data.length === 0 && (
@@ -57,7 +57,7 @@ const InventoryTable = ({ data, onRestock, onDelete }) => {
                     </span>
                   )}
                 </td>
-                <td className="p-4 text-right">
+                <td className="p-4 text-right flex flex-col gap-4 md:block">
                   <button
                     onClick={() => onRestock(item.id)}
                     className="text-xs bg-emerald-600 hover:bg-emerald-500 py-1 px-3 rounded text-white transition-all"

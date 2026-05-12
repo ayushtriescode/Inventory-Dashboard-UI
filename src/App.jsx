@@ -23,6 +23,7 @@ const initialData = [
 ];
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [inventory, setInventory] = useState(() => {
     const saved = localStorage.getItem("my-data");
     return saved ? JSON.parse(saved) : initialData;
@@ -62,16 +63,22 @@ function App() {
 
   return (
     <div className="flex min-h-screen bg-zinc-950 text-zinc-100">
-      <Sidebar />
+      <Sidebar isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
+
       <main className="flex-1 p-8">
         <header className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">
-              Inventory Overview
-            </h1>
-            <p className="text-zinc-400">
-              Manage your stock levels and product details.
-            </p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Inventory Overview</h1>
+              <p className="text-zinc-400 text-sm">Manage your stock levels.</p>
+            </div>
+            
+            <button 
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="md:hidden p-2 bg-zinc-900 border border-zinc-800 rounded-lg"
+            >
+              Menu
+            </button>
           </div>
 
           <div className="relative">
